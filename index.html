@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions Demo</title>
+    <style>
+        #timeBar {
+            width: 200px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="displayDate()">Display Date</button>
+    <input type="text" id="timeBar" disabled>
+
+    <button onclick="calculateFactorial()">Calculate Factorial</button>
+    <button onclick="displayMultiplicationTable()">Display Multiplication Table</button>
+    <button onclick="sumNumbers()">Sum Numbers</button>
+
+    <script>
+        // Function to display current date
+        function displayDate() {
+            const currentDate = new Date().toLocaleString();
+            document.getElementById('timeBar').value = currentDate;
+        }
+
+        // Function to calculate factorial of a number
+        function calculateFactorial() {
+            const num = prompt("Enter a number to calculate its factorial:");
+            if (num !== null) {
+                const number = parseInt(num);
+                if (isNaN(number) || number < 0) {
+                    alert("Please enter a valid non-negative integer.");
+                    return;
+                }
+                let factorial = 1;
+                for (let i = 1; i <= number; i++) {
+                    factorial *= i;
+                }
+                alert(`The factorial of ${number} is ${factorial}`);
+            }
+        }
+
+        // Function to display multiplication table
+        function displayMultiplicationTable() {
+            const num = prompt("Enter a number for the multiplication table:");
+            if (num !== null) {
+                const number = parseInt(num);
+                if (isNaN(number)) {
+                    alert("Please enter a valid number.");
+                    return;
+                }
+                let table = '';
+                for (let i = 1; i <= 10; i++) {
+                    table += `${number} x ${i} = ${number * i}\n`;
+                }
+                alert(`Multiplication table of ${number}:\n${table}`);
+            }
+        }
+
+        // Function to sum numbers
+        function sumNumbers() {
+            const firstNum = prompt("Enter the first number:");
+            if (firstNum !== null) {
+                const firstNumber = parseFloat(firstNum);
+                const anotherNum = confirm("Do you want to add another number?");
+                if (anotherNum) {
+                    const secondNum = prompt("Enter the second number:");
+                    if (secondNum !== null) {
+                        const secondNumber = parseFloat(secondNum);
+                        const sum = firstNumber + secondNumber;
+                        alert(`The sum of ${firstNumber} and ${secondNumber} is ${sum}`);
+                    }
+                } else {
+                    alert(`The total is ${firstNumber}`);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
